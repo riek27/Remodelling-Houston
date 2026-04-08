@@ -1,269 +1,356 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcadia Custom Homes | Architectural Excellence</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- SEO & Meta -->
+  <title>Gatluak Remodeler | #1 Home Remodeling Contractor Houston TX | Free Estimate</title>
+  <meta name="description" content="Gatluak Remodeler is Houston's award-winning remodeling company. Kitchen, bathroom, whole home renovations & additions. Free consultation. Call (713) 555-0192." />
+  <meta name="keywords" content="Houston remodeling contractor, kitchen remodel Houston TX, bathroom renovation Houston, home additions Houston, general contractor Houston, luxury remodeling, Gatluak Remodeler" />
+  <meta name="author" content="Gatluak Remodeler" />
+  <link rel="canonical" href="https://www.gatluakremodeler.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Gatluak Remodeler | Houston's Premier Home Remodeling" />
+  <meta property="og:description" content="Transform your home with Houston's trusted remodeling experts. Kitchens, bathrooms, additions & whole home renovations." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://www.gatluakremodeler.com/og-image.jpg" />
+
+  <!-- Tailwind + Custom Config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { 
+            primary: '#1E293B',      // deep slate
+            secondary: '#C9A05F',    // warm gold
+            accent: '#475569',       // muted slate
+            light: '#F8F6F2',        // soft cream
+            dark: '#0F172A',         // dark navy
+            warm: '#F5F2EB' 
+          },
+          fontFamily: { 
+            heading: ['"Cormorant Garamond"', 'Georgia', 'serif'], 
+            body: ['"Inter"', 'system-ui', 'sans-serif'] 
+          },
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; background-color: #FCFAF8; }
+    .hero-overlay { background: linear-gradient(125deg, rgba(30,41,59,0.85) 0%, rgba(71,85,105,0.6) 50%, rgba(30,41,59,0.7) 100%); }
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1), transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1.1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .service-card { transition: all 0.4s ease; background: white; border-radius: 1.8rem; overflow: hidden; box-shadow: 0 15px 30px -8px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.02); }
+    .service-card:hover { transform: translateY(-10px); box-shadow: 0 30px 45px -12px rgba(0,0,0,0.12); border-color: rgba(201,160,95,0.2); }
+    .service-img { height: 220px; width: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.2, 0.9, 0.3, 1.1); }
+    .service-card:hover .service-img { transform: scale(1.03); }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 0; height: 2px; background: #C9A05F; transition: all 0.3s ease; transform: translateX(-50%); }
+    .nav-link:hover::after { width: 100%; }
+    .pulse-btn { animation: gentle-pulse 2.5s infinite; }
+    @keyframes gentle-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,160,95,0.4); } 50% { box-shadow: 0 0 0 14px rgba(201,160,95,0); } }
+    .dropdown-content { visibility: hidden; opacity: 0; transition: opacity 0.2s, visibility 0.2s; }
+    .group:hover .dropdown-content, .dropdown-wrapper.active .dropdown-content { visibility: visible; opacity: 1; }
+    .mobile-menu { transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.1); will-change: transform; }
+    .mobile-menu.open { transform: translateX(0); }
+    .lightbox { opacity: 0; pointer-events: none; transition: opacity 0.25s ease; background: rgba(15,23,42,0.98); backdrop-filter: blur(8px); }
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+    .faq-icon { transition: transform 0.25s ease; }
+    input, select, textarea, button { border-radius: 1rem; transition: all 0.2s; }
+    .glass-card { background: rgba(255,255,255,0.96); backdrop-filter: blur(2px); }
+    .counter-value { font-feature-settings: "tnum"; }
+    @media (max-width: 640px) { .service-img { height: 180px; } }
+    /* Custom decorative elements */
+    .border-accent-gold { border-color: #C9A05F; }
+    .text-shadow-soft { text-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+  </style>
 </head>
-<body>
-    <!-- Header & Navigation -->
-    <header>
-        <div class="container header-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon">A</div>
-                Arcadia<span>Homes</span>
-            </a>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="process.html">Process</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+<body class="bg-white text-gray-700 antialiased">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <video class="hero-video" autoplay muted loop>
-            <source src="assets/video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-content">
-            <h1>Crafting Architectural Excellence</h1>
-            <p>Building beyond expectation with bespoke luxury homes designed for discerning clients worldwide.</p>
-            <a href="portfolio.html" class="btn">View Our Work</a>
+  <!-- Top Bar -->
+  <div class="bg-primary text-white/90 text-sm hidden md:block border-b border-white/5">
+    <div class="max-w-7xl mx-auto px-6 py-2.5 flex flex-wrap justify-between items-center gap-3">
+      <div class="flex flex-wrap items-center gap-6">
+        <a href="tel:+17135550192" class="flex items-center gap-2 hover:text-secondary transition-colors"><i data-lucide="phone" class="w-3.5 h-3.5"></i> (713) 555-0192</a>
+        <a href="mailto:hello@gatluakremodeler.com" class="flex items-center gap-2 hover:text-secondary transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5"></i> hello@gatluakremodeler.com</a>
+      </div>
+      <div class="flex items-center gap-5">
+        <span class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5"></i> Mon–Fri: 8AM–6PM | Sat: 9AM–3PM</span>
+        <div class="flex gap-3 border-l border-white/20 pl-4"><a href="#" class="hover:text-secondary"><i data-lucide="facebook" class="w-4 h-4"></i></a><a href="#" class="hover:text-secondary"><i data-lucide="instagram" class="w-4 h-4"></i></a><a href="#" class="hover:text-secondary"><i data-lucide="twitter" class="w-4 h-4"></i></a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation (Sticky) -->
+  <header id="navbar" class="sticky top-0 z-50 bg-white/90 backdrop-blur-lg border-b border-gray-100/50 shadow-xs transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-6">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="#home" class="flex items-center gap-2 md:gap-3 group">
+          <div class="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-xl flex items-center justify-center group-hover:bg-secondary transition-all shadow-md"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6 text-white"></i></div>
+          <div><span class="font-heading text-xl md:text-2xl font-bold text-primary tracking-tight">Gatluak</span><span class="block text-[9px] md:text-[10px] uppercase tracking-[0.3em] text-gray-400 -mt-1 font-medium">Remodeler</span></div>
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 xl:gap-9">
+          <a href="#home" class="nav-link relative text-sm font-medium text-gray-700 hover:text-primary transition">Home</a>
+          <a href="#about" class="nav-link relative text-sm font-medium text-gray-700 hover:text-primary transition">About</a>
+          <!-- Services Dropdown -->
+          <div class="relative group dropdown-wrapper">
+            <button class="dropdown-toggle nav-link relative text-sm font-medium text-gray-700 hover:text-primary flex items-center gap-1 focus:outline-none" data-target="services-dropdown">Services <i data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i></button>
+            <div id="services-dropdown" class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 pt-4 w-64 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2 overflow-hidden">
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Kitchen Remodeling</a>
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Bathroom Renovation</a>
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Whole Home Remodeling</a>
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Home Additions</a>
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Luxury Basement Finishing</a>
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Outdoor Living & Decks</a>
+                <a href="#services" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary transition">Custom Cabinetry</a>
+              </div>
+            </div>
+          </div>
+          <!-- Service Areas Dropdown -->
+          <div class="relative group dropdown-wrapper">
+            <button class="dropdown-toggle nav-link relative text-sm font-medium text-gray-700 hover:text-primary flex items-center gap-1 focus:outline-none" data-target="areas-dropdown">Service Areas <i data-lucide="chevron-down" class="w-4 h-4 transition-transform"></i></button>
+            <div id="areas-dropdown" class="dropdown-content absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 z-50">
+              <div class="bg-white rounded-2xl shadow-xl border border-gray-100 py-2">
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Houston</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">The Woodlands</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Sugar Land</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Katy</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Pearland</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Cypress</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Kingwood</a>
+                <a href="#areas" class="block px-5 py-2.5 text-sm text-gray-600 hover:bg-warm hover:text-primary">Memorial</a>
+              </div>
+            </div>
+          </div>
+          <a href="#projects" class="nav-link relative text-sm font-medium text-gray-700 hover:text-primary transition">Projects</a>
+          <a href="#process" class="nav-link relative text-sm font-medium text-gray-700 hover:text-primary transition">Process</a>
+          <a href="#blog" class="nav-link relative text-sm font-medium text-gray-700 hover:text-primary transition">Blog</a>
+          <a href="#contact" class="nav-link relative text-sm font-medium text-gray-700 hover:text-primary transition">Contact</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="tel:+17135550192" class="flex items-center gap-2 text-primary hover:text-secondary transition"><div class="w-9 h-9 bg-primary/5 rounded-full flex items-center justify-center border border-primary/10"><i data-lucide="phone" class="w-4 h-4"></i></div><span class="text-sm font-semibold">(713) 555-0192</span></a>
+          <a href="#quote" class="pulse-btn inline-flex items-center gap-2 bg-secondary hover:bg-yellow-700 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-all shadow-md"><i data-lucide="file-text" class="w-4 h-4"></i> Free Estimate</a>
         </div>
+        <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-primary" aria-label="Menu">
+          <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl z-50 p-7 overflow-y-auto">
+    <button id="menu-close" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center text-gray-400 hover:text-primary"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div class="mt-16 space-y-5">
+      <a href="#home" class="block text-lg font-medium text-gray-700 hover:text-primary mobile-link">Home</a>
+      <a href="#about" class="block text-lg font-medium text-gray-700 hover:text-primary mobile-link">About</a>
+      <div class="border-b border-gray-100 pb-2">
+        <button class="mobile-dropdown-toggle flex w-full justify-between items-center text-lg font-medium text-gray-700 hover:text-primary py-2" data-target="mobile-services-list"><span>Services</span><i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i></button>
+        <div id="mobile-services-list" class="mobile-submenu hidden pl-4 space-y-2 mt-2">
+          <a href="#services" class="block text-base text-gray-600 hover:text-primary mobile-link">Kitchen Remodeling</a>
+          <a href="#services" class="block text-base text-gray-600 hover:text-primary mobile-link">Bathroom Renovation</a>
+          <a href="#services" class="block text-base text-gray-600 hover:text-primary mobile-link">Whole Home Remodeling</a>
+          <a href="#services" class="block text-base text-gray-600 hover:text-primary mobile-link">Home Additions</a>
+        </div>
+      </div>
+      <div class="border-b border-gray-100 pb-2">
+        <button class="mobile-dropdown-toggle flex w-full justify-between items-center text-lg font-medium text-gray-700 hover:text-primary py-2" data-target="mobile-areas-list"><span>Service Areas</span><i data-lucide="chevron-down" class="w-5 h-5 transition-transform"></i></button>
+        <div id="mobile-areas-list" class="mobile-submenu hidden pl-4 space-y-2 mt-2">
+          <a href="#areas" class="block text-base text-gray-600 hover:text-primary mobile-link">Houston</a><a href="#areas" class="block text-base text-gray-600 hover:text-primary mobile-link">The Woodlands</a><a href="#areas" class="block text-base text-gray-600 hover:text-primary mobile-link">Sugar Land</a><a href="#areas" class="block text-base text-gray-600 hover:text-primary mobile-link">Katy</a>
+        </div>
+      </div>
+      <a href="#projects" class="block text-lg font-medium text-gray-700 hover:text-primary mobile-link">Projects</a>
+      <a href="#process" class="block text-lg font-medium text-gray-700 hover:text-primary mobile-link">Process</a>
+      <a href="#blog" class="block text-lg font-medium text-gray-700 hover:text-primary mobile-link">Blog</a>
+      <a href="#contact" class="block text-lg font-medium text-gray-700 hover:text-primary mobile-link">Contact</a>
+    </div>
+    <div class="mt-10 space-y-4">
+      <a href="tel:+17135550192" class="flex items-center gap-3 text-primary font-semibold text-lg"><i data-lucide="phone" class="w-5 h-5"></i> (713) 555-0192</a>
+      <a href="#quote" class="mobile-link block w-full text-center bg-secondary hover:bg-yellow-700 text-white font-semibold py-3 rounded-xl">Free Estimate</a>
+    </div>
+  </div>
+  <div id="menu-overlay" class="fixed inset-0 bg-black/40 z-40 hidden transition-opacity"></div>
+
+  <main>
+    <!-- Hero Section with stunning remodel imagery -->
+    <section id="home" class="relative min-h-screen flex items-center">
+      <div class="absolute inset-0">
+        <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1920" alt="Luxury kitchen remodel Houston" class="w-full h-full object-cover" loading="eager" />
+        <div class="hero-overlay absolute inset-0"></div>
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto px-5 md:px-6 py-16 md:py-24 w-full">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div class="text-white">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-5 py-2 rounded-full mb-6 border border-white/20"><span class="w-2 h-2 bg-secondary rounded-full"></span><span class="text-sm font-medium tracking-wide">Award‑Winning Houston Remodeler</span></div>
+            <h1 class="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-5 text-shadow-soft">Crafting <span class="text-secondary">Timeless Homes</span><br>in Houston, TX</h1>
+            <p class="text-base md:text-lg text-white/90 max-w-xl mb-8 leading-relaxed drop-shadow">Kitchen, bathroom, whole home renovations & additions. Gatluak Remodeler delivers luxury, precision, and a seamless experience.</p>
+            <div class="flex flex-wrap gap-4">
+              <a href="#quote" class="inline-flex items-center gap-2 bg-secondary hover:bg-yellow-700 text-white font-semibold px-7 py-3.5 rounded-xl transition pulse-btn shadow-xl">Free Consultation <i data-lucide="arrow-right" class="w-5 h-5"></i></a>
+              <a href="tel:+17135550192" class="inline-flex items-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold px-7 py-3.5 rounded-xl transition bg-secondary/90 hover:bg-secondary"><i data-lucide="phone" class="w-5 h-5"></i> (713) 555-0192</a>
+            </div>
+            <div class="flex flex-wrap gap-6 sm:gap-8 mt-12 pt-6 border-t border-white/20">
+              <div><div class="text-3xl font-bold text-secondary counter" data-target="18">0</div><div class="text-xs text-white/70 uppercase tracking-wider">Years Experience</div></div>
+              <div><div class="text-3xl font-bold text-secondary counter" data-target="1200">0</div><div class="text-xs text-white/70 uppercase tracking-wider">Projects Completed</div></div>
+              <div><div class="text-3xl font-bold text-secondary">4.9★</div><div class="text-xs text-white/70 uppercase tracking-wider">Google Rating</div></div>
+            </div>
+          </div>
+          <div id="quote" class="bg-white rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md mx-auto lg:ml-auto w-full glass-card border border-white/30">
+            <h2 class="font-heading text-2xl font-bold text-primary mb-1">Get Your Free Remodel Estimate</h2>
+            <p class="text-gray-500 text-sm mb-5">We'll respond within 2 hours.</p>
+            <form class="quote-form space-y-4" id="hero-form">
+              <div class="grid grid-cols-2 gap-3"><div><label class="block text-xs font-semibold text-gray-500 mb-1">First Name</label><input type="text" required placeholder="John" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-light focus:border-secondary"></div><div><label class="block text-xs font-semibold text-gray-500 mb-1">Last Name</label><input type="text" required placeholder="Doe" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-light"></div></div>
+              <div><label class="block text-xs font-semibold text-gray-500 mb-1">Phone *</label><input type="tel" required placeholder="(713) 000-0000" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-light"></div>
+              <div><label class="block text-xs font-semibold text-gray-500 mb-1">Email</label><input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-light"></div>
+              <div><label class="block text-xs font-semibold text-gray-500 mb-1">Interested In</label><select required class="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm bg-light"><option disabled selected>Select service</option><option>Kitchen Remodel</option><option>Bathroom Renovation</option><option>Whole Home Remodel</option><option>Home Addition</option></select></div>
+              <button type="submit" class="w-full bg-primary hover:bg-accent text-white font-semibold py-3.5 rounded-xl flex items-center justify-center gap-2 transition-all shadow-md">Request Free Estimate <i data-lucide="send" class="w-4 h-4"></i></button>
+              <p class="text-center text-xs text-gray-400">🔒 100% secure | No obligation</p>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce"><a href="#about" class="text-white/70 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></a></div>
     </section>
 
-    <!-- Intro Section -->
-    <section class="intro">
-        <div class="container">
-            <div class="intro-content">
-                <div class="intro-text">
-                    <h2>Exceptional Custom Homes</h2>
-                    <p>Arcadia Homes specializes in creating extraordinary residences that reflect our clients' unique lifestyles and aspirations. With an unwavering commitment to quality and attention to detail, we transform architectural visions into living realities.</p>
-                    <p>Our collaborative approach ensures that each home we build is a true reflection of its inhabitants, blending sophisticated design with functional elegance.</p>
-                    <a href="about.html" class="btn btn-gold">Our Philosophy</a>
-                </div>
-                <div class="intro-image" style="background-image: url('assets/home.jpg')"></div>
-            </div>
+    <!-- Trust Bar -->
+    <section class="bg-warm py-7 border-y border-gray-200/50"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-70"><span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Trusted By</span><span class="text-sm font-bold text-gray-600">NARI Certified</span><span class="text-sm font-bold text-gray-600">NKBA Member</span><span class="text-sm font-bold text-gray-600">Houston HBA</span><span class="text-sm font-bold text-gray-600">Best of Houzz</span></div></div></section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 md:py-28 bg-white"><div class="max-w-7xl mx-auto px-6"><div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"><div class="reveal relative"><img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Remodeling team Houston" class="rounded-3xl shadow-xl w-full h-[400px] md:h-[520px] object-cover"><div class="absolute -bottom-6 -right-4 md:-bottom-8 md:-right-8 bg-primary text-white p-5 md:p-6 rounded-2xl shadow-xl"><div class="text-3xl md:text-4xl font-bold text-secondary">18+</div><div class="text-xs md:text-sm mt-1">Years of Excellence</div></div></div><div class="reveal"><span class="text-secondary font-semibold text-sm uppercase tracking-widest">About Gatluak Remodeler</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary mt-2 mb-5 leading-tight">Houston's Premier <span class="text-secondary">Remodeling Partner</span></h2><div class="w-16 h-1 bg-secondary rounded mb-6"></div><p class="text-gray-600 leading-relaxed mb-5 text-base md:text-lg">We're a family-owned, design-build firm dedicated to transforming houses into dream homes. With meticulous craftsmanship and transparent communication, we make remodeling an exciting journey.</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">Licensed & Insured</span></div><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">3D Design & Planning</span></div><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">2-Year Workmanship Warranty</span></div><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">Dedicated Project Manager</span></div></div><a href="#contact" class="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-semibold px-7 py-3.5 rounded-xl transition shadow-md">Learn More <i data-lucide="arrow-right" class="w-5 h-5"></i></a></div></div></div></section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 md:py-28 bg-light"><div class="max-w-7xl mx-auto px-6"><div class="text-center max-w-3xl mx-auto mb-14 reveal"><span class="text-secondary text-sm uppercase tracking-widest">Our Process</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary mt-2 mb-4">From Concept to <span class="text-secondary">Completion</span></h2><div class="w-16 h-1 bg-secondary rounded mx-auto"></div></div><div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center"><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="w-14 h-14 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold border border-primary/10">1</div><h3 class="font-bold text-primary mb-2">Consult & Design</h3><p class="text-sm text-gray-500">In-home meeting, 3D renderings, and detailed proposal.</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="w-14 h-14 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold border border-primary/10">2</div><h3 class="font-bold text-primary mb-2">Planning & Permits</h3><p class="text-sm text-gray-500">We handle all Houston permits and material selection.</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="w-14 h-14 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold border border-primary/10">3</div><h3 class="font-bold text-primary mb-2">Construction</h3><p class="text-sm text-gray-500">Daily updates, clean site, and expert craftsmanship.</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="w-14 h-14 bg-primary/5 text-primary rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold border border-primary/10">4</div><h3 class="font-bold text-primary mb-2">Final Walkthrough</h3><p class="text-sm text-gray-500">Punch list, orientation, and enjoy your new space.</p></div></div></div></section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+          <span class="text-secondary text-sm uppercase tracking-widest">Our Expertise</span>
+          <h2 class="font-heading text-3xl md:text-5xl font-bold text-primary mt-2 mb-4">Complete Home <span class="text-secondary">Remodeling Services</span></h2>
+          <div class="w-16 h-1 bg-secondary rounded mx-auto"></div>
+          <p class="text-gray-600 mt-5 text-base">From kitchen overhauls to whole‑home transformations, we bring your vision to life.</p>
         </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="service-card"><img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Kitchen remodel" class="service-img"><div class="p-6"><h3 class="font-heading text-xl font-bold text-primary mb-2">Kitchen Remodeling</h3><p class="text-gray-600 text-sm mb-4">Custom cabinets, islands, and premium finishes.</p><a href="#quote" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2">Get Quote →</a></div></div>
+          <div class="service-card"><img src="https://images.pexels.com/photos/1910472/pexels-photo-1910472.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bathroom renovation" class="service-img"><div class="p-6"><h3 class="font-heading text-xl font-bold text-primary mb-2">Bathroom Renovation</h3><p class="text-gray-600 text-sm mb-4">Spa-like retreats, walk-in showers, and vanities.</p><a href="#quote" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2">Get Quote →</a></div></div>
+          <div class="service-card"><img src="https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Whole home remodeling" class="service-img"><div class="p-6"><h3 class="font-heading text-xl font-bold text-primary mb-2">Whole Home Remodeling</h3><p class="text-gray-600 text-sm mb-4">Complete interior transformations tailored to you.</p><a href="#quote" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2">Get Quote →</a></div></div>
+          <div class="service-card"><img src="https://images.pexels.com/photos/3935321/pexels-photo-3935321.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Home addition" class="service-img"><div class="p-6"><h3 class="font-heading text-xl font-bold text-primary mb-2">Home Additions</h3><p class="text-gray-600 text-sm mb-4">Add square footage with seamless design integration.</p><a href="#quote" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2">Get Quote →</a></div></div>
+          <div class="service-card"><img src="https://images.pexels.com/photos/6316788/pexels-photo-6316788.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Basement finishing" class="service-img"><div class="p-6"><h3 class="font-heading text-xl font-bold text-primary mb-2">Luxury Basements</h3><p class="text-gray-600 text-sm mb-4">Home theaters, bars, gyms, and guest suites.</p><a href="#quote" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2">Get Quote →</a></div></div>
+          <div class="service-card"><img src="https://images.pexels.com/photos/1866149/pexels-photo-1866149.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom cabinetry" class="service-img"><div class="p-6"><h3 class="font-heading text-xl font-bold text-primary mb-2">Custom Cabinetry</h3><p class="text-gray-600 text-sm mb-4">Handcrafted storage solutions for every room.</p><a href="#quote" class="text-secondary font-semibold text-sm inline-flex items-center gap-1 hover:gap-2">Get Quote →</a></div></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Portfolio Preview Section -->
-    <section class="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Projects</h2>
-                <p>A curated selection of our most prestigious custom home projects, showcasing our dedication to architectural excellence.</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="assets/archi.jpg" alt="Modern Cliffside Residence" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Cliffside Modern</h3>
-                        <p>Malibu, California</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Lakeside Retreat" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Lakeside Retreat</h3>
-                        <p>Lake Tahoe, Nevada</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1453&q=80" alt="Urban Oasis" class="portfolio-image">
-                    <div class="portfolio-overlay">
-                        <h3>Urban Oasis</h3>
-                        <p>New York, New York</p>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="portfolio.html" class="btn btn-dark">View Full Portfolio</a>
-            </div>
-        </div>
-    </section>
+    <!-- Why Choose Us -->
+    <section class="py-20 md:py-28 bg-primary text-white"><div class="max-w-7xl mx-auto px-6 text-center"><div class="max-w-2xl mx-auto mb-14"><span class="text-secondary text-sm uppercase tracking-widest">Why Gatluak</span><h2 class="font-heading text-3xl md:text-5xl font-bold mt-2">The <span class="text-secondary">Gatluak</span> Difference</h2><div class="w-16 h-1 bg-secondary rounded mx-auto mt-4"></div></div><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"><div><i data-lucide="badge-check" class="w-12 h-12 text-secondary mx-auto mb-4"></i><h3 class="font-heading text-lg font-bold mb-2">Master Craftsmen</h3><p class="text-white/60 text-sm">In-house team, no subcontractors.</p></div><div><i data-lucide="trending-up" class="w-12 h-12 text-secondary mx-auto mb-4"></i><h3 class="font-heading text-lg font-bold mb-2">Transparent Pricing</h3><p class="text-white/60 text-sm">Detailed, fixed-price contracts.</p></div><div><i data-lucide="calendar-check" class="w-12 h-12 text-secondary mx-auto mb-4"></i><h3 class="font-heading text-lg font-bold mb-2">On-Time & On-Budget</h3><p class="text-white/60 text-sm">We respect your timeline and investment.</p></div><div><i data-lucide="users" class="w-12 h-12 text-secondary mx-auto mb-4"></i><h3 class="font-heading text-lg font-bold mb-2">Dedicated Support</h3><p class="text-white/60 text-sm">One point of contact throughout.</p></div></div></div></section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>Client Testimonials</h2>
-                <p>Hear from our valued clients about their experience working with Arcadia Homes.</p>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-item">
-                    <div class="testimonial-text">
-                        Working with Arcadia Homes was an exceptional experience from start to finish. Their attention to detail and commitment to quality is unparalleled.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">MR</div>
-                        <div class="author-info">
-                            <h4>Michael R.</h4>
-                            <p>Hillside Residence</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-text">
-                        The team at Arcadia transformed our vision into a home that exceeded our wildest expectations. Every detail was executed with precision and care.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">SC</div>
-                        <div class="author-info">
-                            <h4>Sarah C.</h4>
-                            <p>Waterfront Estate</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-text">
-                        Arcadia's collaborative approach made the entire process seamless. They listened to our needs and created a home that perfectly reflects our lifestyle.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-initials">TJ</div>
-                        <div class="author-info">
-                            <h4>Thomas J.</h4>
-                            <p>Mountain Retreat</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Projects Gallery -->
+    <section id="projects" class="py-20 md:py-28 bg-white"><div class="max-w-7xl mx-auto px-6"><div class="text-center max-w-3xl mx-auto mb-12 reveal"><span class="text-secondary text-sm uppercase tracking-widest">Our Portfolio</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary">Recent <span class="text-secondary">Transformations</span></h2><div class="w-16 h-1 bg-secondary rounded mx-auto mt-3"></div></div><div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-min"><div class="gallery-item rounded-2xl overflow-hidden col-span-2 row-span-1 md:row-span-2 cursor-pointer" onclick="openLightbox(this)"><img src="https://images.pexels.com/photos/1457844/pexels-photo-1457844.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury kitchen" class="w-full h-full object-cover min-h-[240px] md:min-h-[280px]"></div><div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openLightbox(this)"><img src="https://images.pexels.com/photos/271815/pexels-photo-271815.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Modern bathroom" class="w-full h-48 object-cover"></div><div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openLightbox(this)"><img src="https://images.pexels.com/photos/276514/pexels-photo-276514.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Living room remodel" class="w-full h-48 object-cover"></div><div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openLightbox(this)"><img src="https://images.pexels.com/photos/1571457/pexels-photo-1571457.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Home addition" class="w-full h-48 object-cover"></div><div class="gallery-item rounded-2xl overflow-hidden cursor-pointer" onclick="openLightbox(this)"><img src="https://images.pexels.com/photos/3932930/pexels-photo-3932930.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Custom cabinetry" class="w-full h-48 object-cover"></div><div class="gallery-item rounded-2xl overflow-hidden col-span-2 cursor-pointer" onclick="openLightbox(this)"><img src="https://images.pexels.com/photos/534228/pexels-photo-534228.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Open concept remodel" class="w-full h-56 object-cover"></div></div></div></section>
+    <div id="lightbox" class="lightbox fixed inset-0 z-50 flex items-center justify-center p-4" onclick="closeLightbox()"><button class="absolute top-5 right-5 text-white hover:text-secondary text-3xl">✕</button><img id="lightbox-img" src="" alt="Enlarged" class="max-w-full max-h-[90vh] object-contain rounded-xl"></div>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2>Begin Your Journey</h2>
-                <p>Ready to create your dream home? Contact us to schedule a consultation.</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>We'd love to discuss your vision for a custom home. Reach out to start the conversation.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Our Office</h4>
-                                <p>123 Design Avenue, Beverly Hills, CA 90210</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+1 (310) 555-1234</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@arcadiahomes.com</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Project Details</label>
-                            <textarea id="message" class="form-control" rows="5" placeholder="Tell us about your project"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-gold" style="width: 100%;">Submit Inquiry</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- Service Areas -->
+    <section id="areas" class="py-20 md:py-28 bg-light"><div class="max-w-7xl mx-auto px-6"><div class="grid lg:grid-cols-2 gap-12 items-start"><div class="reveal"><span class="text-secondary text-sm uppercase tracking-widest">Service Areas</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary mt-2 mb-4">Remodeling Homes Across <span class="text-secondary">Greater Houston</span></h2><div class="w-16 h-1 bg-secondary rounded mb-6"></div><p class="text-gray-600 mb-7 text-base">Gatluak Remodeler proudly serves Houston and surrounding communities with award‑winning renovation services.</p><div class="grid grid-cols-2 gap-2.5 mb-8"><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Houston</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">The Woodlands</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Sugar Land</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Katy</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Pearland</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Cypress</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Kingwood</span></div><div class="flex items-center gap-2 bg-white px-3 py-2 rounded-lg shadow-sm"><i data-lucide="map-pin" class="w-4 h-4 text-secondary"></i><span class="text-sm">Memorial</span></div></div><a href="#quote" class="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-semibold px-7 py-3 rounded-xl transition shadow-md">Check Availability →</a></div><div class="reveal sticky top-28"><div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d222651.12756729593!2d-95.63469055!3d29.81718545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C%20TX!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus" width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy" title="Houston remodeling service area"></iframe></div></div></div></div></section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">
-                        <div class="logo-icon">A</div>
-                        Arcadia<span>Homes</span>
-                    </div>
-                    <p>Creating exceptional custom homes for discerning clients worldwide through unparalleled craftsmanship and design excellence.</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-column">
-                        <h4>Explore</h4>
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="process.html">Process</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Services</h4>
-                        <ul>
-                            <li><a href="#">Custom Home Building</a></li>
-                            <li><a href="#">Architectural Design</a></li>
-                            <li><a href="#">Renovations</a></li>
-                            <li><a href="#">Consultation</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-column">
-                        <h4>Connect</h4>
-                        <ul>
-                            <li><a href="#contact">Contact Us</a></li>
-                            <li><a href="#">Careers</a></li>
-                            <li><a href="#">Press</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Arcadia Homes. All rights reserved.</p>
-                <p>Designed with excellence in mind.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 md:py-28 bg-white"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12"><span class="text-secondary text-sm uppercase tracking-widest">From Our Blog</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary">Remodeling <span class="text-secondary">Insights & Ideas</span></h2><div class="w-16 h-1 bg-secondary rounded mx-auto mt-3"></div></div><div class="grid md:grid-cols-3 gap-8"><div class="bg-light rounded-2xl overflow-hidden shadow-sm"><img src="https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600" class="h-48 w-full object-cover" alt="Kitchen trends"><div class="p-5"><span class="text-xs text-secondary font-semibold">May 12, 2026</span><h3 class="font-bold text-primary text-lg mt-1">Top Kitchen Remodel Trends in Houston</h3><p class="text-sm text-gray-500 mt-2">Discover what's popular in 2026.</p><a href="#" class="inline-block mt-3 text-secondary font-medium text-sm">Read more →</a></div></div><div class="bg-light rounded-2xl overflow-hidden shadow-sm"><img src="https://images.pexels.com/photos/1910472/pexels-photo-1910472.jpeg?auto=compress&cs=tinysrgb&w=600" class="h-48 w-full object-cover" alt="Bathroom cost"><div class="p-5"><span class="text-xs text-secondary font-semibold">April 2, 2026</span><h3 class="font-bold text-primary text-lg mt-1">Bathroom Remodel Cost Guide 2026</h3><p class="text-sm text-gray-500 mt-2">What to expect for your renovation.</p><a href="#" class="inline-block mt-3 text-secondary font-medium text-sm">Read more →</a></div></div><div class="bg-light rounded-2xl overflow-hidden shadow-sm"><img src="https://images.pexels.com/photos/1571459/pexels-photo-1571459.jpeg?auto=compress&cs=tinysrgb&w=600" class="h-48 w-full object-cover" alt="Open concept"><div class="p-5"><span class="text-xs text-secondary font-semibold">Mar 5, 2026</span><h3 class="font-bold text-primary text-lg mt-1">Open Concept Living: Pros & Cons</h3><p class="text-sm text-gray-500 mt-2">Is it right for your Houston home?</p><a href="#" class="inline-block mt-3 text-secondary font-medium text-sm">Read more →</a></div></div></div></div></section>
 
-    <script src="script.js"></script>
+    <!-- Testimonials -->
+    <section class="py-20 md:py-28 bg-light"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12"><span class="text-secondary text-sm uppercase tracking-widest">Testimonials</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary">What Our <span class="text-secondary">Clients Say</span></h2><div class="w-16 h-1 bg-secondary rounded mx-auto mt-3"></div></div><div class="grid md:grid-cols-3 gap-6"><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="flex text-secondary mb-3 text-lg">★★★★★</div><p class="text-gray-600 mb-4 text-sm">"Gatluak Remodeler transformed our outdated kitchen into a chef's dream. Professional, on time, and stunning results."</p><div><div class="font-semibold text-primary">Sarah & Michael P.</div><div class="text-xs text-gray-400">The Woodlands</div></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="flex text-secondary mb-3">★★★★★</div><p class="text-gray-600 mb-4 text-sm">"We added a primary suite and bathroom. The team was incredible—clean, respectful, and the craftsmanship is top‑notch."</p><div><div class="font-semibold text-primary">David L.</div><div class="text-xs text-gray-400">Memorial</div></div></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><div class="flex text-secondary mb-3">★★★★★</div><p class="text-gray-600 mb-4 text-sm">"Best remodeling experience we've ever had. Transparent communication and the finished project exceeded expectations."</p><div><div class="font-semibold text-primary">Linda G.</div><div class="text-xs text-gray-400">Sugar Land</div></div></div></div></div></section>
+
+    <!-- FAQ -->
+    <section class="py-16 md:py-24 bg-white"><div class="max-w-4xl mx-auto px-6"><div class="text-center mb-12"><span class="text-secondary text-sm uppercase tracking-widest">FAQ</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary">Remodeling <span class="text-secondary">Questions Answered</span></h2><div class="w-16 h-1 bg-secondary rounded mx-auto mt-3"></div></div><div class="space-y-4"><div class="bg-light rounded-xl shadow-sm"><button class="faq-btn w-full flex justify-between items-center p-5 text-left" onclick="toggleFaq(this)"><span class="font-semibold text-primary">How long does a kitchen remodel take?</span><i data-lucide="plus" class="w-5 h-5 text-secondary faq-icon"></i></button><div class="faq-content hidden px-5 pb-5 text-gray-600 text-sm">Typically 6-10 weeks depending on scope and material lead times.</div></div><div class="bg-light rounded-xl shadow-sm"><button class="faq-btn w-full flex justify-between items-center p-5 text-left" onclick="toggleFaq(this)"><span class="font-semibold text-primary">What is the average cost of a bathroom remodel in Houston?</span><i data-lucide="plus" class="w-5 h-5 text-secondary faq-icon"></i></button><div class="faq-content hidden px-5 pb-5 text-gray-600 text-sm">Bathroom renovations start around $25k and vary based on size and finishes.</div></div><div class="bg-light rounded-xl shadow-sm"><button class="faq-btn w-full flex justify-between items-center p-5 text-left" onclick="toggleFaq(this)"><span class="font-semibold text-primary">Do you offer financing options?</span><i data-lucide="plus" class="w-5 h-5 text-secondary faq-icon"></i></button><div class="faq-content hidden px-5 pb-5 text-gray-600 text-sm">Yes, we partner with leading lenders to offer flexible financing plans.</div></div></div></div></section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 md:py-28 bg-light"><div class="max-w-7xl mx-auto px-6 text-center"><span class="text-secondary text-sm uppercase tracking-widest">Contact</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary">Start Your <span class="text-secondary">Remodeling Journey</span></h2><div class="w-16 h-1 bg-secondary rounded mx-auto my-4"></div><div class="grid md:grid-cols-3 gap-8 mt-12 text-left"><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><i data-lucide="phone" class="w-8 h-8 text-primary mb-3"></i><h3 class="font-bold text-primary text-lg">Call Us</h3><a href="tel:+17135550192" class="text-secondary font-bold text-xl">(713) 555-0192</a><p class="text-gray-500 text-sm mt-1">Mon-Fri 8AM-6PM</p></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><i data-lucide="mail" class="w-8 h-8 text-primary mb-3"></i><h3 class="font-bold text-primary text-lg">Email</h3><a href="mailto:hello@gatluakremodeler.com" class="text-secondary break-all">hello@gatluakremodeler.com</a></div><div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100"><i data-lucide="map-pin" class="w-8 h-8 text-primary mb-3"></i><h3 class="font-bold text-primary text-lg">Visit</h3><p class="text-gray-600">1234 Renovation Row, Houston, TX 77002</p></div></div><div class="max-w-2xl mx-auto mt-12"><form id="contact-form" class="bg-white p-6 md:p-8 rounded-2xl shadow-sm border border-gray-100"><div class="grid sm:grid-cols-2 gap-4"><input type="text" placeholder="Full Name *" required class="p-3 border rounded-xl bg-light"><input type="tel" placeholder="Phone *" required class="p-3 border rounded-xl bg-light"><input type="email" placeholder="Email *" required class="p-3 border rounded-xl bg-light"><select class="p-3 border rounded-xl bg-light"><option>Kitchen Remodel</option><option>Bathroom</option><option>Whole Home</option></select></div><textarea rows="3" placeholder="Tell us about your project" class="w-full mt-4 p-3 border rounded-xl bg-light"></textarea><button type="submit" class="mt-5 w-full sm:w-auto bg-primary hover:bg-accent text-white font-semibold py-3 px-10 rounded-xl transition shadow-md">Send Message</button></form></div></div></section>
+
+    <!-- CTA Banner -->
+    <section class="py-16 bg-primary relative overflow-hidden text-center"><div class="relative z-10 px-6"><h2 class="font-heading text-2xl md:text-4xl font-bold text-white mb-4">Ready to Transform Your Houston Home?</h2><p class="text-white/80 mb-7 max-w-xl mx-auto">Schedule your free in‑home consultation today.</p><div class="flex flex-wrap gap-4 justify-center"><a href="tel:+17135550192" class="bg-secondary hover:bg-yellow-700 text-white px-8 py-3 rounded-xl font-semibold flex gap-2 items-center pulse-btn shadow-lg"><i data-lucide="phone"></i> (713) 555-0192</a><a href="#quote" class="border-2 border-white/30 hover:border-white text-white px-8 py-3 rounded-xl font-semibold transition">Free Estimate</a></div></div></section>
+  </main>
+
+  <footer class="bg-dark text-white"><div class="max-w-7xl mx-auto px-6 py-12"><div class="grid md:grid-cols-4 gap-8"><div><div class="flex items-center gap-2 mb-4"><div class="w-9 h-9 bg-secondary rounded-xl flex items-center justify-center"><i data-lucide="home" class="w-5 h-5 text-white"></i></div><span class="font-heading font-bold">Gatluak Remodeler</span></div><p class="text-gray-400 text-sm">Houston's premier design‑build remodeling firm.</p></div><div><h4 class="font-bold mb-4">Quick Links</h4><ul class="space-y-2 text-sm text-gray-400"><li><a href="#home" class="hover:text-secondary">Home</a></li><li><a href="#services" class="hover:text-secondary">Services</a></li><li><a href="#projects" class="hover:text-secondary">Projects</a></li><li><a href="#blog" class="hover:text-secondary">Blog</a></li></ul></div><div><h4 class="font-bold mb-4">Services</h4><ul class="space-y-2 text-sm text-gray-400"><li>Kitchen Remodeling</li><li>Bathroom Renovation</li><li>Home Additions</li><li>Whole Home Remodeling</li></ul></div><div><h4 class="font-bold mb-4">Contact</h4><p class="text-sm text-gray-400">📞 (713) 555-0192<br>✉️ hello@gatluakremodeler.com</p></div></div><div class="border-t border-white/10 mt-8 pt-6 text-center text-gray-500 text-xs">© <span id="year"></span> Gatluak Remodeler. All rights reserved. | Houston, TX</div></div></footer>
+
+  <button id="back-to-top" class="fixed bottom-6 right-6 w-11 h-11 bg-primary hover:bg-accent text-white rounded-full shadow-lg flex items-center justify-center transition-all opacity-0 translate-y-4 z-40"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg></button>
+
+  <script>
+    (function(){
+      lucide.createIcons(); 
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Dropdown toggles
+      const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+      dropdownToggles.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault(); e.stopPropagation();
+          const wrapper = this.closest('.dropdown-wrapper');
+          wrapper.classList.toggle('active');
+          document.querySelectorAll('.dropdown-wrapper').forEach(w => { if (w !== wrapper) w.classList.remove('active'); });
+        });
+      });
+      document.addEventListener('click', (e) => { if (!e.target.closest('.dropdown-wrapper')) document.querySelectorAll('.dropdown-wrapper').forEach(w => w.classList.remove('active')); });
+
+      // Mobile menu
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuClose = document.getElementById('menu-close');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuOverlay = document.getElementById('menu-overlay');
+      function openMenu() { mobileMenu.classList.add('open'); menuOverlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+      function closeMenu() { mobileMenu.classList.remove('open'); menuOverlay.classList.add('hidden'); document.body.style.overflow = ''; }
+      menuToggle?.addEventListener('click', (e) => { e.stopPropagation(); mobileMenu.classList.contains('open') ? closeMenu() : openMenu(); });
+      menuClose?.addEventListener('click', closeMenu);
+      menuOverlay?.addEventListener('click', closeMenu);
+      document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', closeMenu));
+      
+      // Mobile submenus
+      document.querySelectorAll('.mobile-dropdown-toggle').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const target = document.getElementById(this.dataset.target);
+          const icon = this.querySelector('i');
+          target.classList.toggle('hidden');
+          icon.style.transform = target.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        });
+      });
+
+      // Reveal
+      const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); } }); }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // Counters
+      const counters = document.querySelectorAll('.counter');
+      const counterObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { const target = parseInt(e.target.dataset.target); let curr = 0; const step = target/55; const timer = setInterval(() => { curr+=step; if(curr>=target){ e.target.textContent = target.toLocaleString() + (target===18?'+':'+'); clearInterval(timer); } else e.target.textContent = Math.floor(curr).toLocaleString(); },30); counterObserver.unobserve(e.target); } }); }, { threshold:0.5 });
+      counters.forEach(c => counterObserver.observe(c));
+
+      // Back to top
+      const backBtn = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => { backBtn.classList.toggle('opacity-0', window.scrollY <= 500); backBtn.classList.toggle('translate-y-4', window.scrollY <= 500); });
+      backBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+      // Lightbox
+      window.openLightbox = (el) => { const img = el.querySelector('img'); document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow='hidden'; };
+      window.closeLightbox = () => { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow=''; };
+      
+      // FAQ toggle
+      window.toggleFaq = (btn) => {
+        const content = btn.nextElementSibling, icon = btn.querySelector('.faq-icon');
+        document.querySelectorAll('.faq-content').forEach(c => { if(c!==content) c.classList.add('hidden'); });
+        document.querySelectorAll('.faq-icon').forEach(i => { if(i!==icon) i.style.transform='rotate(0deg)'; });
+        content.classList.toggle('hidden');
+        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(45deg)';
+      };
+
+      // Forms
+      document.getElementById('hero-form')?.addEventListener('submit', e => { e.preventDefault(); const btn = e.target.querySelector('button'); btn.innerHTML = '<svg class="w-5 h-5 animate-spin mx-auto" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"/><path d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" fill="currentColor"/></svg>'; setTimeout(() => { btn.innerHTML = '✓ Request Received!'; btn.classList.add('bg-green-600'); setTimeout(() => { btn.innerHTML = 'Request Free Estimate <i data-lucide="send" class="w-4 h-4"></i>'; btn.classList.remove('bg-green-600'); lucide.createIcons(); }, 2500); }, 1200); });
+      document.getElementById('contact-form')?.addEventListener('submit', e => { e.preventDefault(); const btn = e.target.querySelector('button'); btn.innerHTML = 'Sending...'; setTimeout(() => { btn.innerHTML = '✓ Sent!'; btn.classList.add('bg-green-600'); setTimeout(() => { btn.innerHTML = 'Send Message'; btn.classList.remove('bg-green-600'); e.target.reset(); lucide.createIcons(); }, 2500); }, 1000); });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const targetId = this.getAttribute('href'); if(targetId === '#' || targetId === '') return; const target = document.querySelector(targetId); if(target) { e.preventDefault(); const offset = document.getElementById('navbar')?.offsetHeight + 20 || 80; window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' }); } }); });
+    })();
+  </script>
 </body>
 </html>
