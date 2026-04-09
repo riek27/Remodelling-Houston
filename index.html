@@ -219,9 +219,31 @@
       <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce"><a href="#about" class="text-white/70 hover:text-white"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg></a></div>
     </section>
 
-    <!-- Trust Bar -->
-    <section class="bg-warm py-7 border-y border-gray-200/50"><div class="max-w-7xl mx-auto px-6"><div class="flex flex-wrap items-center justify-center gap-8 md:gap-12 opacity-70"><span class="text-xs font-semibold uppercase tracking-wider text-gray-500">Trusted By</span><span class="text-sm font-bold text-gray-600">NARI Certified</span><span class="text-sm font-bold text-gray-600">NKBA Member</span><span class="text-sm font-bold text-gray-600">Houston HBA</span><span class="text-sm font-bold text-gray-600">Best of Houzz</span></div></div></section>
-
+    <!-- Replace the existing Trust Bar section with this updated version -->
+<section class="bg-warm py-7 border-y border-gray-200/50 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-center gap-8 md:gap-12">
+      <!-- Fixed label -->
+      <span class="text-xs font-semibold uppercase tracking-wider text-gray-500 whitespace-nowrap">Trusted By</span>
+      
+      <!-- Scrolling container -->
+      <div class="relative flex-1 overflow-hidden">
+        <div class="scrolling-track flex items-center gap-8 md:gap-12 whitespace-nowrap">
+          <!-- Original set of badges -->
+          <span class="text-sm font-bold text-gray-600">NARI Certified</span>
+          <span class="text-sm font-bold text-gray-600">NKBA Member</span>
+          <span class="text-sm font-bold text-gray-600">Houston HBA</span>
+          <span class="text-sm font-bold text-gray-600">Best of Houzz</span>
+          <!-- Duplicate set for seamless loop -->
+          <span class="text-sm font-bold text-gray-600">NARI Certified</span>
+          <span class="text-sm font-bold text-gray-600">NKBA Member</span>
+          <span class="text-sm font-bold text-gray-600">Houston HBA</span>
+          <span class="text-sm font-bold text-gray-600">Best of Houzz</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- About Section -->
     <section id="about" class="py-20 md:py-28 bg-white"><div class="max-w-7xl mx-auto px-6"><div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"><div class="reveal relative"><img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Remodeling team Houston" class="rounded-3xl shadow-xl w-full h-[400px] md:h-[520px] object-cover"><div class="absolute -bottom-6 -right-4 md:-bottom-8 md:-right-8 bg-primary text-white p-5 md:p-6 rounded-2xl shadow-xl"><div class="text-3xl md:text-4xl font-bold text-secondary">18+</div><div class="text-xs md:text-sm mt-1">Years of Excellence</div></div></div><div class="reveal"><span class="text-secondary font-semibold text-sm uppercase tracking-widest">About Gatluak Remodeler</span><h2 class="font-heading text-3xl md:text-5xl font-bold text-primary mt-2 mb-5 leading-tight">Houston's Premier <span class="text-secondary">Remodeling Partner</span></h2><div class="w-16 h-1 bg-secondary rounded mb-6"></div><p class="text-gray-600 leading-relaxed mb-5 text-base md:text-lg">We're a family-owned, design-build firm dedicated to transforming houses into dream homes. With meticulous craftsmanship and transparent communication, we make remodeling an exciting journey.</p><div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8"><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">Licensed & Insured</span></div><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">3D Design & Planning</span></div><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">2-Year Workmanship Warranty</span></div><div class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-secondary"></i><span class="text-sm">Dedicated Project Manager</span></div></div><a href="#contact" class="inline-flex items-center gap-2 bg-primary hover:bg-accent text-white font-semibold px-7 py-3.5 rounded-xl transition shadow-md">Learn More <i data-lucide="arrow-right" class="w-5 h-5"></i></a></div></div></div></section>
 
