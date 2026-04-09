@@ -70,6 +70,28 @@
     /* Custom decorative elements */
     .border-accent-gold { border-color: #C9A05F; }
     .text-shadow-soft { text-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .scrolling-track {
+  display: flex;
+  animation: scroll-left 25s linear infinite;
+}
+
+.scrolling-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Ensure the container hides overflow properly */
+.overflow-hidden {
+  overflow: hidden;
+}
   </style>
 </head>
 <body class="bg-white text-gray-700 antialiased">
